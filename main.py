@@ -66,14 +66,14 @@ def button(update, context):
 def command_start(update, context: CallbackContext):
     if update.effective_chat.type == "private":
         
-        addme = InlineKeyboardButton(text="✅ Qrupa əlavə edin!", url="https://t.me/hesabrobot?startgroup=a")
-        sohbet = InlineKeyboardButton(text="📣 Support kanalı", url="https://t.me/robotlarimtg")
-        oyun = InlineKeyboardButton(text="🔰 Support Qrupu", url="https://t.me/robotlarimgroup")
-        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/aykhan_s")
+        addme = InlineKeyboardButton(text="✅ Qrupa əlavə edin!", url="http://t.me/MatematikOyunuBot?startgroup=a")
+        sohbet = InlineKeyboardButton(text="📣 Support kanalı", url="https://t.me/MrMrsChat")
+        oyun = InlineKeyboardButton(text="🔰 Support Qrupu", url="https://t.me/MrMrsChat")
+        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/coolnorman")
 
         keyboard = [[addme],[sohbet],[oyun],[admin]]
         reply_markup = InlineKeyboardMarkup(keyboard)
-        update.message.reply_text('🙋🏻‍♂️ Hesab Oyunu botuna xoş gəldiniz\n📜Qaydalar çox sadədir bot sizə bir rəqəm göstərəcək və həmin rəqəmi qrupdakı istifadəçilərə hesab formasında deməlisiniz\nNümunə: Bot sizə 5 rəqəmi göstərib siz qrupda 3+2=? belə bir sual qeyd etməlisiniz.\n🆘Bot yalnız qrupda oynamaq üçün nəzərdə tutulub  adminlik vacibdir', reply_to_message_id=True, reply_markup=reply_markup)
+        update.message.reply_text(🙋🏻‍♂️ Hesap Oyunu botuna hoş geldiniz\n📜Kurallar çok basit, bot size bir numara gösterecek ve o numarayı grup kullanıcılarına hesap şeklinde söylemelisiniz.\nÖrnek: Bot size 5 sayısını gösterdi ve siz 3 + 2 =? böyle bir sorudan bahsetmelisiniz.\n🆘Bot yalnızca grup oyunu için tasarlanmıştır ve yönetim önemlidir', reply_to_message_id=True, reply_markup=reply_markup)
     else:
         chat_id = update.message.chat.id
         user_id = update.message.from_user.id
@@ -87,7 +87,7 @@ def command_start(update, context: CallbackContext):
         game = get_or_create_game(chat_id)
         game.start()
 
-        update.message.reply_text('🙋🏻‍♂️Hesab oyunu başladı\nRiyaziyyatına güvənənlər burdasız 🤔 ?'.format(username), reply_to_message_id=True)
+        update.message.reply_text('🙋🏻‍♂️Hesab oyunu başladı\nMatematiğe güvenenler buradamı 🤔 ?'.format(username), reply_to_message_id=True)
 
         set_master(update, context)
 
@@ -104,13 +104,13 @@ def set_master(update, context):
 
     game.set_master(update.message.from_user.id)
 
-    show_word_btn = InlineKeyboardButton("📜Rəqəmə bax", callback_data='show_word')
+    show_word_btn = InlineKeyboardButton("📜Numaraya bak", callback_data='show_word')
     
 
     keyboard = [[show_word_btn]]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text('[{}](tg://user?id={}) indi sizə bir misal göndərəcək diqqətli olun və tez hesablayın 😉'.format(username,user_id), reply_to_message_id=True, reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN)
+    update.message.reply_text('[{}](tg://user?id={}) Şimdi dikkatli olun,Bot size bir Numara gönderecek ve hızlı bir şekilde hesaplayın 😉'.format(username,user_id), reply_to_message_id=True, reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN)
 
 
 def command_master(update: Update, context):
@@ -123,7 +123,7 @@ def command_master(update: Update, context):
         return
 
     if not game.is_master_time_left():
-        update.message.reply_text('Müəllim olmaq üçün {} saniyə qalıb'.format(game.get_master_time_left()),
+        update.message.reply_text('Hoca olmak için {} saniyü kaldı'.format(game.get_master_time_left()),
                                   reply_to_message_id=True)
         return
 
