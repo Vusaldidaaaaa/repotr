@@ -73,7 +73,7 @@ def command_start(update, context: CallbackContext):
 
         keyboard = [[addme],[sohbet],[oyun],[admin]]
         reply_markup = InlineKeyboardMarkup(keyboard)
-        update.message.reply_text(🙋🏻‍♂️ Hesap Oyunu botuna hoş geldiniz\n📜Kurallar çok basit, bot size bir numara gösterecek ve o numarayı grup kullanıcılarına hesap şeklinde söylemelisiniz.\nÖrnek: Bot size 5 sayısını gösterdi ve siz 3 + 2 =? böyle bir sorudan bahsetmelisiniz.\n🆘Bot yalnızca grup oyunu için tasarlanmıştır ve yönetim önemlidir', reply_to_message_id=True, reply_markup=reply_markup)
+        update.message.reply_text(🔥 Merhaba Hesap Oyunu botuna hoş geldiniz\n📜Kurallar çok basit, bot size bir numara gösterecek ve o numarayı grup kullanıcılarına hesap şeklinde söylemelisiniz.\nÖrnek: Bot size 5 sayısını gösterdi ve siz 3 + 2 =? böyle bir sorudan bahsetmelisiniz.\n🆘Bot yalnızca grup oyunu için tasarlanmıştır ve yönetim önemlidir', reply_to_message_id=True, reply_markup=reply_markup)
     else:
         chat_id = update.message.chat.id
         user_id = update.message.from_user.id
@@ -87,7 +87,7 @@ def command_start(update, context: CallbackContext):
         game = get_or_create_game(chat_id)
         game.start()
 
-        update.message.reply_text('🙋🏻‍♂️Hesab oyunu başladı\nMatematiğe güvenenler buradamı 🤔 ?'.format(username), reply_to_message_id=True)
+        update.message.reply_text('🔥 Merhaba Hesab oyunu başladı\nMatematiğe güvenenler buradamı 🤔 ?'.format(username), reply_to_message_id=True)
 
         set_master(update, context)
 
